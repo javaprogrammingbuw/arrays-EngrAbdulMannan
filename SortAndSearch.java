@@ -5,9 +5,9 @@ public class SortAndSearch {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Enter a length of an array ");
 		int length =scan.nextInt();
-		int a=scan.nextInt();
+		//int a=scan.nextInt();
 		int[] input = new int[length];
-		for (int i =0;i<length;i++) {
+		for (int i =0;i<input.length;i++) {
 			input[i] = scan.nextInt();
 		}
 		
@@ -20,6 +20,7 @@ public class SortAndSearch {
 		System.out.println("The bubblesort is"+result[k]);
 		
 		}
+		System.out.println("The Binary search is"+binSearch(input,4));
 		//System.out.println("The bubblesort is"+bubbleSort(result));
 	//todo: Write a method bubbleSrt which gets an integer array as input and which sorts this array according to the bubblesort algorithm
 	//If you don't know how bubblesort works you can read it here: http://www.pkirs.utep.edu/CIS3355/Tutorials/chapter9/tutorial9A/bubblesort.htm
@@ -48,17 +49,31 @@ public class SortAndSearch {
 		return n;	
 	}
 	public static int binSearch(int[] n,int a) {
-		if(a==n[n.length/2]) {
-			return n.length/2;
-		}
-		else if (a<n[n.length/2]) {
-			return binSearch(n,a);
-		}
-		else {
-			return binSearch(n,a);
-		}
-				
+		
+		int[] n1=bubbleSort(n);
+		int min=0, max=n1.length-1;
+		for(int i=0;i<n1.length;i++){
+			int sindx=Math.round((min+max)/2);
 			
+				if(n1[sindx]>a){
+			
+					max=sindx-1;
+			
+				}else if(n1[sindx]<a){
+			
+					min=sindx+1;
+			
+				}else{
+			
+					return a;	
+			
+				}	
+		}
+		return -1;
 		
 	}
+
 }
+
+	
+	
